@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mot de passe</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #f2f2f2;
+      }
+      .txt{
+        font-size: 20px;
+        color:black;
+      
+
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-image: linear-gradient(135deg, #f8b1fd 10%, #4c3dd2 100%);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        max-width: 200px;
+      }
+      .message {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .password {
+        text-align: center;
+        margin-bottom: 5px;
+        background-color: #f2f2f2;
+      }
+      .cta {
+        text-align: center;
+      }
+      p{
+       text-align: center;
+       font-size: large;
+
+      }
+      .cta a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-image: linear-gradient(135deg,  #d4372c  0%, #4028c6 100%);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .cta a:hover {
+        background-color:linear-gradient(135deg,  #c11a0e  0%, #270eb2 100%);
+      }
+      .signature {
+        text-align: center;
+        margin-top: 20px;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="https://www.maintenance-gmao.com/img/logo-maintenance-gmao.png" alt="Logo">
+      </div>
+      <div class="message">
+        <p>Cher/Chère <%= nom %>,</p>
+        <p>Nous sommes ravis de vous accueillir en tant que nouveau membre de notre service . Nous sommes convaincus que vous allez adorer notre communauté et que vous allez y trouver tout ce dont vous avez besoin.
+
+            Voici vos informations de connexion :</p>
+      </div>
+      
+       <p><span class="txt">Adresse</span>:<span class="password"><%= email %></span></p>
+       <p><span class="txt">Mot de passe</span>:<span class="password"><%= password %></span></p>
+      
+      <p>Nous vous conseillons de changer votre mot de passe dès que possible pour des raisons de sécurité.
+
+        Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter </p>
+      <div class="cta">
+        <a href="http://localhost:4200/login">Se connecter</a>
+      </div>
+     
+      <div class="signature">
+        <p>Cordialement,</p>
+        <p>L'équipe techenique</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Intervention et demande de pièce</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+span {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  margin-top: 100px;
+  margin-bottom: 200px;
+
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.signature {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .signature label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .signature input {
+        width: 300px;
+        height: 30px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Liste des demandes de pièces pour l'intervention n°<span> <%= idintervention %></span></h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de la pièce</th>
+          <th>Image de la pièce</th>
+          <th>Référence de la pièce</th>
+          <th>Marque de la pièce</th>
+          <th>Quantité demandé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pieces.forEach(function(piece) { %>
+          <tr>
+            <td><%= piece.piece.nom_piece %></td>
+            <td> <img  id="image"  src ="http://127.0.0.1:1337/images/<%= piece.piece.image %>"  alt="image" style="width: 100px;"></td>
+            <td><%= piece.piece.ref_piece %></td>
+            <td><%= piece.piece.marque_piece %></td>
+            <td><%= piece.quantite %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <div class="signature">
+      <label>Signature :</label>
+      <canvas id="signature-canvas"></canvas>
+     
+    </div>
+  </body>
+  
+  
+  
+  
+</html>

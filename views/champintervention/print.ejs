@@ -1,0 +1,195 @@
+  
+  <!DOCTYPE html>
+  <html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rapport d'intervention</title>
+    <style>
+      /* Styles pour le rapport d'intervention */
+      h1 {
+        text-align: center;
+        margin-top: 2em;
+      }
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 80%;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 0.5em;
+      }
+      th {
+        background-color: lightgray;
+      }
+      .title {
+        margin-top: 2em;
+        margin-bottom: 1em;
+      }
+      .info {
+        font-weight: bold;
+        margin-right: 1em;
+      }
+      .observation {
+        margin-top: 1em;
+      }
+    </style>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      table th, table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      table th {
+        background-color: #f2f2f2;
+      }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      span {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      .section-header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .section-content {
+        margin-left: 20px;
+      }
+      .signature {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .signature label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .signature input {
+        width: 300px;
+        height: 30px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rapport d'intervention n° <span><%= intervention.id %></span></h1>
+    
+    <!-- Informations sur l'intervention -->
+    <p><span class="info">Date de début :</span> <%= intervention.date_debut %></p>
+    <p><span class="info">Date de Fin :</span> <%= intervention.date_fin %></p>
+
+    <p><span class="info">État :</span> <%= intervention.etat%></p>
+    <div class="observation">
+      <p><span class="info">Observation :</span> <%= intervention.observation%></p>
+    </div>
+    
+    <!-- Informations sur l'ordre d'intervention -->
+    <div class="title">Informations sur l'ordre d'intervention</div>
+    <table>
+      <tr>
+        <th>Degré d'urgence</th>
+        <th>Début prévu</th>
+        <th>Fin prévu</th>
+        <th>Date d'estimation</th>
+        <th>Nature des travaux</th>
+        <th>Description</th>
+        <th>Technicien</th>
+      </tr>
+      <tr>
+        <td> <%= intervention.ordreintervention.degre_urgence%></td>
+        <td><%= intervention.ordreintervention.debutprevu%></td>
+        <td><%= intervention.ordreintervention.finprevu%></td>
+        <td><%= intervention.ordreintervention.dateestimation%></td>
+        <td><%= intervention.ordreintervention.nature_de_travaux%></td>
+        <td><%= intervention.ordreintervention.description%></td>
+        <td><%= tech.nom%></td>
+      </tr>
+    </table>
+
+
+
+    <div class="title">Informations sur l'equipement concerné l'intervention</div>
+    <img src ="http://127.0.0.1:1337/images/<%= eq.equipement.image %> "   alt="image" style="width:350px; height:100px;">
+    <table>
+      <tr>
+        <th>Libellé</th>
+        <th>Marque</th>
+        <th>Numéro de série</th>
+        <th>Durée en service</th>
+      </tr>
+      <tr>
+        <td><%= eq.equipement.libelle %></td>
+        <td><%= eq.equipement.marque %></td>
+        <td><%= eq.equipement.numero_serie %></td>
+        <td><%= eq.equipement.duree_en_service %>Jour </td>
+      </tr>
+    </table>
+    
+    
+    <!-- Tâches effectuées -->
+    <div class="title">Tâches effectuées</div>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Piéces utilisées a intervention</th>
+    <th>Quantité</th>
+
+
+    
+  </tr>
+  <% intervention.taches.forEach((task) => { %>
+    <tr>
+      <td><%= task.date %></td>
+      <td><%= task.description %></td>
+      <td><%= task.nom_piece %></td>
+      <td><%= task.quantite %></td>
+
+
+    </tr>
+  <% }); %>
+</table> 
+
+
+
+
+<!--     
+    <div class="title">Demandes de pièces</div>
+    <table>
+      <tr>
+        <th>Quantité</th>
+        <th>Pièce</th>
+      </tr>
+      <% intervention.demandepieces.forEach((task) => { %>
+        <tr>
+          <td><%= task.quantite%></td>
+          <td><%= task.piece%></td>
+        </tr>
+      <% }); %>
+    </table>
+     -->
+   
+    <div class="signature">
+      <label>Signature :</label>
+      <canvas id="signature-canvas"></canvas>
+     
+    </div>
